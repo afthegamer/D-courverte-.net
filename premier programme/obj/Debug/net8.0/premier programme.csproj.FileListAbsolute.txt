@@ -26,3 +26,4 @@ C:\Users\Boulot\OneDrive - ACE DIGITALe\Bureau\premier programme\premier program
 C:\Users\Boulot\OneDrive - ACE DIGITALe\Bureau\premier programme\premier programme\obj\Debug\net8.0\premier programme.pdb
 C:\Users\Boulot\OneDrive - ACE DIGITALe\Bureau\premier programme\premier programme\obj\Debug\net8.0\premier programme.genruntimeconfig.cache
 C:\Users\Boulot\OneDrive - ACE DIGITALe\Bureau\premier programme\premier programme\obj\Debug\net8.0\ref\premier programme.dll
+C:\Users\Boulot\OneDrive - ACE DIGITALe\Bureau\premier programme\premier programme\obj\Debug\net8.0\premier programme.sourcelink.json

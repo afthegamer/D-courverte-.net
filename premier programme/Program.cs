@@ -4,8 +4,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.Write("Quel est ton nom ? ");
-        var nama = Console.ReadLine();
+        var nama = "";
+        while (nama == "")
+        {
+            Console.Write("Quel est ton nom ? ");
+            nama = Console.ReadLine().Trim();
+            if (nama == "") Console.WriteLine("Veuillez entrer un nom valide");
+        }
+
         var tryagain = 0;
         try
         {
@@ -19,7 +25,7 @@ internal class Program
                 if (int.TryParse(input, out var parsedAge))
                 {
                     ageNumber = parsedAge;
-                    
+
 
                     Console.WriteLine("Bonjour je m'appelle " + nama + " et j'ai " + ageNumber + " ans");
                     Console.WriteLine(nama + ", c'est bien mon nom");
