@@ -2,47 +2,55 @@
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static string DemanderNom()
     {
-        var nama = "";
-        while (nama == "")
+        string nom = "";
+        while (string.IsNullOrWhiteSpace(nom))
         {
             Console.Write("Quel est ton nom ? ");
-            nama = Console.ReadLine().Trim();
-            if (nama == "") Console.WriteLine("Veuillez entrer un nom valide");
+            nom = Console.ReadLine()?.Trim() ?? "";
+            if (string.IsNullOrWhiteSpace(nom))
+            {
+                Console.WriteLine("Veuillez entrer un nom valide");
+            }
         }
+        return nom;
+    }
 
-        var tryagain = 0;
+    private static int DemanderAge()
+    {
+        int ageNumber = 0;
+        while (ageNumber <= 0)
+        {
+            Console.Write("Quel est ton âge ? ");
+            string? input = Console.ReadLine();
+
+            if (int.TryParse(input, out int parsedAge) && parsedAge > 0)
+            {
+                ageNumber = parsedAge;
+            }
+            else
+            {
+                Console.WriteLine("Tu n'as pas entré un nombre valide.");
+            }
+        }
+        return ageNumber;
+    }
+
+    private static void Main(string[] args)
+    {
         try
         {
-            int? ageNumber = null;
+            string nom = DemanderNom();
+            int age = DemanderAge();
 
-            while (tryagain < 4 && ageNumber == null)
-            {
-                Console.Write("Quel est ton âge ? ");
-                var input = Console.ReadLine();
-
-                if (int.TryParse(input, out var parsedAge))
-                {
-                    ageNumber = parsedAge;
-
-
-                    Console.WriteLine("Bonjour je m'appelle " + nama + " et j'ai " + ageNumber + " ans");
-                    Console.WriteLine(nama + ", c'est bien mon nom");
-                    Console.WriteLine(ageNumber + " est bien mon age");
-                    // break implicite car ageNumber != null
-                }
-                else
-                {
-                    Console.WriteLine("Tu n'as pas entré un nombre valide.");
-                    tryagain++;
-                }
-            }
+            Console.WriteLine($"Bonjour je m'appelle {nom} et j'ai {age} ans");
+            Console.WriteLine($"{nom}, c'est bien mon nom");
+            Console.WriteLine($"{age} est bien mon age");
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            Console.WriteLine($"Une erreur est survenue : {e.Message}");
         }
 
         Console.WriteLine("Fin du programme");
