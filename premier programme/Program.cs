@@ -32,7 +32,7 @@ internal class Program
         return ageNumber;
     }
 
-    private static void DemanderInformation(string nom, int age)
+    private static void DemanderInformation(string nom, int age, float taille = 0)
     {
         try
         {
@@ -63,6 +63,8 @@ internal class Program
                     Console.WriteLine($"{nom}, tu es mineur");
                     break;
             }
+
+            if (taille != 0) Console.WriteLine($"{nom}, tu as {taille} cm de taille");
         }
         catch (Exception e)
         {
@@ -76,6 +78,6 @@ internal class Program
     {
         var nom = DemanderNom(1);
         var age = DemanderAge(1);
-        DemanderInformation(nom, age);
+        DemanderInformation(nom, age, 1.70f);
     }
 }
