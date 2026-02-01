@@ -41,8 +41,8 @@ internal class Program
             Console.WriteLine($"{age + 1} est bien mon age que j'aurais prochainement");
             switch (age)
             {
-                case 17:
-                    Console.WriteLine($"{nom}, tu es presque majeur");
+                case int a when a >= 12 && a <= 17:
+                    Console.WriteLine($"{nom}, tu es un adolescent");
                     break;
                 case 18:
                     Console.WriteLine($"{nom}, tu es tout juste majeur");
@@ -55,6 +55,9 @@ internal class Program
                     break;
                 case int a when a <= 10:
                     Console.WriteLine($"{nom}, tu es encore un petit enfant");
+                    break;
+                case int a when a == 1 || a == 2:
+                    Console.WriteLine($"{nom}, tu es un bébé");
                     break;
                 default:
                     Console.WriteLine($"{nom}, tu es mineur");
