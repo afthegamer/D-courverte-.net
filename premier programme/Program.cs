@@ -8,6 +8,13 @@ internal class Program
     // On instancie le Random une seule fois
     private static readonly Random rand = new Random();
 
+    enum e_Operateur
+    {
+        ADDITION = 1,
+        MULTIPLICATION = 2,
+        SOUSTRACTION = 3
+    }
+
     private static void PoserQuestion(int min, int max)
     {
         int bonnesReponses = 0;
@@ -18,14 +25,38 @@ internal class Program
         {
             var a = rand.Next(min, max + 1);
             var b = rand.Next(min, max + 1);
-            var reponseAttendue = a + b;
+            var o = (e_Operateur)rand.Next(1, 4); // 1, 2 ou 3 casté en e_Operateur
+            int reponseAttendue;
+            string operateur;
+
+            switch (o)
+            {
+                case e_Operateur.ADDITION:
+                    reponseAttendue = a + b;
+                    operateur = "+";
+                    break;
+                case e_Operateur.MULTIPLICATION:
+                    reponseAttendue = a * b;
+                    operateur = "*";
+                    break;
+                case e_Operateur.SOUSTRACTION:
+                    reponseAttendue = a - b;
+                    operateur = "-";
+                    break;
+                default:
+                    // Cas par défaut (ne devrait pas arriver ici avec le Random(1, 4))
+                    reponseAttendue = a + b;
+                    operateur = "+";
+                    break;
+            }
+
             int reponseInt = 0;
 
             Console.WriteLine($"Question n°{numeroQuestion} (Score actuel: {bonnesReponses}/3)");
 
             while (true) // Boucle pour valider la saisie de l'utilisateur pour la question en cours
             {
-                Console.Write($"Combien ça fait {a} + {b} ? ");
+                Console.Write($"Combien ça fait {a} {operateur} {b} ? ");
                 var reponse = Console.ReadLine();
 
                 try
