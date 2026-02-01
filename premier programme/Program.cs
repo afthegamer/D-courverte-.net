@@ -350,6 +350,41 @@ namespace programme_collections
             }
         }
 
+        static void MaFonction(out int p)
+        {
+            p = 10;
+        }
+
+        static void MaFonction2(List<int> p)
+        {
+            p[0] = 10;
+        }
+
+        static void PassageValeursOuRef()
+        {
+            //int a = 5;
+            //MaFonction(out a); // Passage par référence
+
+            //int num = int.Parse("abdhdjf");
+            int num = 0;
+            if (int.TryParse("aaaass", out num))
+            {
+                Console.WriteLine("Conversion OK");
+                num++;
+            }
+            else
+            {
+                Console.WriteLine("Problème de Conversion");
+            }
+            
+
+            //var l = new List<int> { 5 };
+            //MaFonction2(l); // Passage par reference
+
+            //Console.WriteLine(l[0]);
+            Console.WriteLine(num);
+        }
+
         static void Main(string[] args)
         {
             //Tableaux();
@@ -358,7 +393,8 @@ namespace programme_collections
             //ListesDeListes();
             //Dictionnaire();
             //BoucleForEach();
-            TrisEtLinq();
+            //TrisEtLinq();
+            PassageValeursOuRef();
         }
     }
 }
