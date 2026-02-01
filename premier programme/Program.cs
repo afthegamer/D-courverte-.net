@@ -21,7 +21,7 @@ internal class Program
             var reponseAttendue = a + b;
             int reponseInt = 0;
 
-            Console.WriteLine($"Question n°{numeroQuestion} (Score: {bonnesReponses}/3)");
+            Console.WriteLine($"Question n°{numeroQuestion} (Score actuel: {bonnesReponses}/3)");
 
             while (true) // Boucle pour valider la saisie de l'utilisateur pour la question en cours
             {
@@ -53,7 +53,22 @@ internal class Program
             Console.WriteLine(); // Une ligne vide pour aérer
         }
         
-        Console.WriteLine($"Félicitations ! Vous avez obtenu 3 bonnes réponses en {numeroQuestion - 1} questions.");
+        int totalQuestions = numeroQuestion - 1;
+        Console.WriteLine($"Félicitations ! Vous avez obtenu 3 bonnes réponses en {totalQuestions} questions.");
+
+        // Affichage du message en fonction de la performance
+        if (totalQuestions == 3)
+        {
+            Console.WriteLine("Excellent ! C'est un sans faute !");
+        }
+        else if (totalQuestions <= 6)
+        {
+            Console.WriteLine("Bien joué ! Encore un petit effort pour le sans faute.");
+        }
+        else
+        {
+            Console.WriteLine("Tu as réussi, mais tu as besoin de réviser un peu tes maths !");
+        }
     }
 
     private static void Main(string[] args)
