@@ -10,12 +10,18 @@ internal class Program
 
     private static void PoserQuestion(int min, int max)
     {
-        while (true) // Boucle infinie pour poser des questions en continu
+        int bonnesReponses = 0;
+        int numeroQuestion = 1;
+        
+        // On boucle tant qu'on n'a pas atteint 3 bonnes réponses
+        while (bonnesReponses < 3) 
         {
             var a = rand.Next(min, max + 1);
             var b = rand.Next(min, max + 1);
             var reponseAttendue = a + b;
             int reponseInt = 0;
+
+            Console.WriteLine($"Question n°{numeroQuestion} (Score: {bonnesReponses}/3)");
 
             while (true) // Boucle pour valider la saisie de l'utilisateur pour la question en cours
             {
@@ -36,14 +42,18 @@ internal class Program
             if (reponseInt == reponseAttendue)
             {
                 Console.WriteLine("Bravo !");
+                bonnesReponses++;
             }
             else
             {
                 Console.WriteLine($"Mauvais ! La réponse était {reponseAttendue}");
             }
             
+            numeroQuestion++;
             Console.WriteLine(); // Une ligne vide pour aérer
         }
+        
+        Console.WriteLine($"Félicitations ! Vous avez obtenu 3 bonnes réponses en {numeroQuestion - 1} questions.");
     }
 
     private static void Main(string[] args)
